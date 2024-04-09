@@ -1,0 +1,190 @@
+{% include "header.html"%}
+{% load static %} 
+      
+      <!--body start-->
+
+      <div class="container mt-5 mb-5 "   >
+        <div class="row justify-content-center ">
+            <div class="col-12">
+                <h2 style="text-align: center; color:red ; "> Files to Pdf Converter </h2><p style="text-align: center;" > Convert your file into pdf </p>
+            </div>
+        </div>
+      </div>
+      <!--gpt-->
+      <div class="container" style="background-color: grey;" >
+        <div class="row">
+            <div class="col opacity-75 ">
+                <div id="inputContainer">
+        
+                    <label for="fileInput" class="custom-file-upload" style="text-align: center;" >
+                      Select Files
+                    </label>
+                    <p style="text-align: center;" >Drop files here. 100 MB maximum file size</p>
+                    <input type="file" id="fileInput" multiple onchange="handleFileUpload(event)">
+                    <button id="convertBtn" class="hidden">Convert to PDF</button>
+                  </div>
+            </div>
+        </div>
+           
+      </div>
+      <div class="container">
+        <div class="row" >
+            <div class="col-lg-4 col-12 ">
+                <div class="card mt-5 border-0 " style="width: 20rem;">
+                    <i class="fa-solid fa-list-check" style="text-align: center; font-size: 50px; " ></i>
+                    <div class="card-body">
+                      <h5 class="card-title" style="text-align: center;"   >300+ formats supported</h5>
+                      <p class="card-text">We support more than 25600 different conversions between more than 300 different file formats. More than any other converter.</p>
+                      
+                    </div>
+                  </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mt-5 border-0 " style="width: 20rem;">
+                    <i class="fa-regular fa-star" style="text-align: center; font-size: 50px; " ></i>
+                    <div class="card-body">
+                      <h5 class="card-title" style="text-align: center;" >Fast and easy</h5>
+                      <p class="card-text">Just drop your files on the page, choose an output format and click "Convert" button. Wait a little for the process to complete. We aim to do all our conversions in under 1-2 minutes.</p>
+                      
+                    </div>
+                  </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mt-5 border-0 " style="width: 15rem;">
+                    <i class="fa-solid fa-cloud-arrow-up" style="text-align: center; font-size: 50px; " ></i>
+                    <div class="card-body">
+                      <h5 class="card-title" style="text-align: center;" >In the cloud</h5>
+                      <p class="card-text">All conversions take place in the cloud and will not consume any capacity from your computer.</p>
+                      
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row" >
+            <div class="col-lg-4">
+                <div class="card mt-5 border-0 " style="width: 20rem;">
+                    <i class="fa-solid fa-gear" style="text-align: center; font-size: 50px; " ></i>
+                    <div class="card-body">
+                      <h5 class="card-title" style="text-align: center;"  >Custom settings</h5>
+                      <p class="card-text">Most conversion types support advanced options. For example with a video converter you can convert vedio into Mp3 </p>
+                      
+                    </div>
+                  </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mt-5 border-0 " style="width: 20rem;">
+                    <i class="fa-solid fa-shield-halved" style="text-align: center; font-size: 50px; " ></i>
+                    <div class="card-body">
+                      <h5 class="card-title" style="text-align: center;" >Security guaranteed</h5>
+                      <p class="card-text"> No one has access to your files and privacy is 100% guaranteed. Read more in security.</p>
+                      
+                    </div>
+                  </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mt-5 border-0 " style="width: 20rem;">
+                    <i class="fa-solid fa-computer" style="text-align: center; font-size: 50px; " ></i>
+                    <div class="card-body">
+                      <h5 class="card-title" style="text-align: center;" >All devices supported</h5>
+                      <p class="card-text">Convertio is browser-based and works for all platforms. There is no need to download and install any software.</p>
+                      
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </div>
+      <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-5 col-3 "></div>
+            <div class="col"> <i class="fa-solid fa-gear fa-spin" style="font-size:80px ; " ></i></div>
+            <p style="text-align: center;" > Converting your files Continously  </p>
+        </div>
+      </div>
+
+
+      <!--footer-->
+      {% include "footer.html"%}
+    
+
+
+
+
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script>
+        let selectedFiles = [];
+
+function handleFileUpload(event) {
+  selectedFiles = event.target.files;
+  if (selectedFiles.length > 0) {
+    let totalSize = 0;
+    for (let i = 0; i < selectedFiles.length; i++) {
+      totalSize += selectedFiles[i].size;
+    }
+    let fileSizeMB = totalSize / (1024 * 1024);
+
+    if (fileSizeMB <= 100) {
+      document.getElementById('convertBtn').classList.remove('hidden');
+    } else {
+      alert('File size exceeds the limit. Please select files up to 100 MB.');
+      document.getElementById('fileInput').value = ''; // Clear the file input
+      document.getElementById('convertBtn').classList.add('hidden');
+    }
+  } else {
+    alert('Please select at least one file.');
+  }
+}
+
+document.getElementById('convertBtn').addEventListener('click', function() {
+  if (selectedFiles.length > 0) {
+    var doc = new jsPDF();
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        var fileData = event.target.result;
+        var fileName = selectedFiles[i].name;
+
+        if (fileName.endsWith('.txt')) {
+          // Convert text file to PDF
+          doc.text(fileData, 10, 10);
+        } else {
+          // Convert image file to PDF
+          if (i > 0) {
+            doc.addPage();
+          }
+          doc.addImage(fileData, 'JPEG', 10, 10, 190, 0);
+        }
+
+        if (i === selectedFiles.length - 1) {
+          doc.save('converted.pdf');
+
+          var downloadLink = document.getElementById('downloadLink');
+          downloadLink.href = doc.output('bloburl');
+          downloadLink.classList.remove('hidden');
+        }
+      };
+
+      if (selectedFiles[i].name.endsWith('.txt')) {
+        reader.readAsText(selectedFiles[i]);
+      } else {
+        reader.readAsDataURL(selectedFiles[i]);
+      }
+    }
+  } else {
+    alert('Please select at least one file.');
+  }
+});
+      </script>
+
+
+
+
+  </body>
+</html>

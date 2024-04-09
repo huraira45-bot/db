@@ -1,0 +1,97 @@
+{% include "header.html"%}
+{% load static %} 
+<!--body start-->
+
+<div class="container mt-5 mb-5 "   >
+    <div class="row justify-content-center ">
+        <div class="col-12">
+            <h2 style="text-align: center; color:red ; "> Image to Pdf Converter </h2><p style="text-align: center;" > Convert your file into pdf </p>
+        </div>
+    </div>
+  </div>
+  <!--gpt-->
+  <div class="container" style="background-color: grey;" >
+    <div class="row">
+        <div class="col opacity-75 ">
+            <div id="inputContainer">
+    
+                <label for="fileInput" class="custom-file-upload" style="text-align: center;" >
+                  Select Files
+                </label>
+                <p style="text-align: center;" >Drop files here. 100 MB maximum file size</p>
+                <input type="file" id="fileInput" multiple onchange="handleFileUpload(event)">
+                <button id="convertBtn" class="hidden">Convert to PDF</button>
+              </div>
+        </div>
+    </div>
+       
+  </div>
+  <div class="container">
+    <div class="row" >
+        <div class="col-lg-4 col-12 ">
+            <div class="card mt-5 border-0 " style="width: 20rem;">
+                <i class="fa-solid fa-list-check" style="text-align: center; font-size: 50px; " ></i>
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;"   >300+ formats supported</h5>
+                  <p class="card-text">We support more than 25600 different conversions between more than 300 different file formats. More than any other converter.</p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card mt-5 border-0 " style="width: 20rem;">
+                <i class="fa-regular fa-star" style="text-align: center; font-size: 50px; " ></i>
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;" >Fast and easy</h5>
+                  <p class="card-text">Just drop your files on the page, choose an output format and click "Convert" button. Wait a little for the process to complete. We aim to do all our conversions in under 1-2 minutes.</p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card mt-5 border-0 " style="width: 15rem;">
+                <i class="fa-solid fa-cloud-arrow-up" style="text-align: center; font-size: 50px; " ></i>
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;" >In the cloud</h5>
+                  <p class="card-text">All conversions take place in the cloud and will not consume any capacity from your computer.</p>
+                  
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" >
+        <div class="col-lg-4">
+            <div class="card mt-5 border-0 " style="width: 20rem;">
+                <i class="fa-solid fa-gear" style="text-align: center; font-size: 50px; " ></i>
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;"  >Custom settings</h5>
+                  <p class="card-text">Most conversion types support advanced options. For example with a video converter you can convert vedio into Mp3 </p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card mt-5 border-0 " style="width: 20rem;">
+                <i class="fa-solid fa-shield-halved" style="text-align: center; font-size: 50px; " ></i>
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;" >Security guaranteed</h5>
+                  <p class="card-text"> No one has access to your files and privacy is 100% guaranteed. Read more in security.</p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card mt-5 border-0 " style="width: 20rem;">
+                <i class="fa-solid fa-computer" style="text-align: center; font-size: 50px; " ></i>
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;" >All devices supported</h5>
+                  <p class="card-text">Convertio is browser-based and works for all platforms. There is no need to download and install any software.</p>
+                  
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+  {% include "footer.html"%}
